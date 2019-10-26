@@ -127,8 +127,9 @@ def list_db_contents():
 
 @app.route('/get_error_rate', methods=['POST'])
 def get_errror_rate():
-    return jsonify({
-        model_to_dict(obs) for obs in ItemRow.select()[:3]
+    a=[model_to_dict(obs) for obs in ItemRow.select()][:3]
+    return jsonify({a
+        
     })
 
 # End webserver stuff
