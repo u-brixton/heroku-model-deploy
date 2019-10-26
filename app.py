@@ -55,8 +55,8 @@ class answers_short(Model):
     class Meta:
         database = DB
 
-DB.create_tables([answers_short], safe=True)
-DB.create_tables([Prediction], safe=True)
+#DB.create_tables([answers_short], safe=True)
+#DB.create_tables([Prediction], safe=True)
 
 # End database stuff
 ########################################
@@ -134,7 +134,8 @@ def list_db_contents():
 @app.route('/get_error_rate')
 def get_error_rate():
     try:
-        p = answers_short.get(answers_short.student == 33999])
+        p=1
+        #p = answers_short.get(answers_short.student == 33999])
     except:
         p=0
     return jsonify({"a":p
