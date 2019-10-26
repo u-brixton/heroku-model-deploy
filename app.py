@@ -133,8 +133,11 @@ def list_db_contents():
 
 @app.route('/get_error_rate')
 def get_error_rate():
-    #p = Prediction.get(Prediction.observation_id == 0])
-    return jsonify({"a":"BB"
+    try:
+        p = answers_short.get(answers_short.student == 33999])
+    except:
+        p=0
+    return jsonify({"a":p
         
     })
 
