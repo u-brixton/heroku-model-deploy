@@ -46,21 +46,6 @@ class Prediction(Model):
     class Meta:
         database = DB
 
-
-class answers_short(Model):
-    item = IntegerField()
-    student=IntegerField()
-    response_time=IntegerField()
-    correct=IntegerField()
-    difficulty=FloatField()
-    student_elo=FloatField()
-    item_elo=FloatField()
-    prob=FloatField()
-
-    class Meta:
-        database = DB
-
-DB.create_tables([answers_short], safe=True)
 DB.create_tables([Prediction], safe=True)
 
 # End database stuff
@@ -136,11 +121,6 @@ def list_db_contents():
         model_to_dict(obs) for obs in Prediction.select()
     ])
 
-@app.route('/get_error_rate',methods=['POST'])
-def get_error_rate():
-    cur.execute("SELECT * FROM answers_short WHERE response_time=3601;")
-    a=cur.fetchall()
-    return jsonify(a)
 
 # End webserver stuff
 ########################################
