@@ -131,16 +131,11 @@ def list_db_contents():
         model_to_dict(obs) for obs in Prediction.select()
     ])
 
-@app.route('/get_error_rate')
+@app.route('/get_error_rate',methods=['POST'])
 def get_error_rate():
-    try:
-        p=1
-        #p = answers_short.get(answers_short.student == 33999])
-    except:
-        p=0
-    return jsonify({"a":p
-        
-    })
+    student_id=request.get_json()
+    p=student_id
+    return p
 
 # End webserver stuff
 ########################################
