@@ -55,8 +55,8 @@ class answers_short(Model):
     class Meta:
         database = DB
 
-#DB.create_tables([answers_short], safe=True)
-#DB.create_tables([Prediction], safe=True)
+DB.create_tables([answers_short], safe=True)
+DB.create_tables([Prediction], safe=True)
 
 # End database stuff
 ########################################
@@ -134,7 +134,8 @@ def list_db_contents():
 @app.route('/get_error_rate',methods=['POST'])
 def get_error_rate():
     student_id=request.get_json()
-    p=student_id
+    b=student_id
+    p=answers_short.get(answers_short.response_time == 3601)
     return p
 
 # End webserver stuff
