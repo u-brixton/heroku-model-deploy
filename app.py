@@ -4,6 +4,7 @@ import pickle
 from sklearn.externals import joblib
 import pandas as pd
 from flask import Flask, jsonify, request
+import psycopg2
 from peewee import (
     SqliteDatabase, PostgresqlDatabase, Model, IntegerField,
     FloatField, TextField, IntegrityError
@@ -133,10 +134,9 @@ def list_db_contents():
 
 @app.route('/get_error_rate',methods=['POST'])
 def get_error_rate():
-    student_id=request.get_json()
-    b=student_id
-    p=answers_short.get(answers_short.response_time == 3601)
-    return p
+    DATABASE_URL =  "postgres://axjyqoghnzvcvs:7fbb5d724a69284482896f914629796976e27258acf09bcdc9aedbf6081b64cf@ec2-46-137-113-157.eu-west-1.compute.amazonaws.com:5432/d5av4o4gbmrpqi"
+    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    return 1
 
 # End webserver stuff
 ########################################
