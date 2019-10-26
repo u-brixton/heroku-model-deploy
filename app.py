@@ -138,7 +138,9 @@ def list_db_contents():
 
 @app.route('/get_error_rate',methods=['POST'])
 def get_error_rate():
-    return DATABASE_URL
+    cur.execute("SELECT * FROM answers_short WHERE response_time=3601;")
+    a=cur.fetchall()
+    return jsonity(a)
 
 # End webserver stuff
 ########################################
