@@ -42,9 +42,15 @@ class Prediction(Model):
         database = DB
 
 
-class ItemRow(Model):
+class answers_short(Model):
     item = IntegerField()
     student=IntegerField()
+    response_time=IntegerField()
+    correct=IntegerField()
+    difficulty=FloatField()
+    student_elo=FloatField()
+    item_elo=FloatField()
+    prob=FloatField()
 
     class Meta:
         database = DB
@@ -127,8 +133,8 @@ def list_db_contents():
 
 @app.route('/get_error_rate', methods=['POST'])
 def get_errror_rate():
-    a=[model_to_dict(obs) for obs in ItemRow.select()][:3]
-    return jsonify({a
+    p = answers_short.get(answers_short.student == 33999)
+    return jsonify({p
         
     })
 
