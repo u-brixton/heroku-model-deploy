@@ -133,7 +133,7 @@ def list_db_contents():
 
 @app.route('/get_error_rate', methods=['POST'])
 def get_errror_rate():
-    p = Prediction.get(Prediction.observation_id == 1])
+    p = Prediction.get(Prediction.observation_id == 0])
     return jsonify({p
         
     })
