@@ -140,7 +140,7 @@ def list_db_contents():
 def get_error_rate():
     cur.execute("SELECT * FROM answers_short WHERE response_time=3601;")
     a=cur.fetchall()
-    return jsonity(a)
+    return jsonify(a)
 
 # End webserver stuff
 ########################################
