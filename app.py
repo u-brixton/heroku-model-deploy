@@ -55,7 +55,7 @@ class answers_short(Model):
     class Meta:
         database = DB
 
-DB.create_tables([ItemRow], safe=True)
+DB.create_tables([answers_short], safe=True)
 DB.create_tables([Prediction], safe=True)
 
 # End database stuff
@@ -131,10 +131,10 @@ def list_db_contents():
         model_to_dict(obs) for obs in Prediction.select()
     ])
 
-@app.route('/get_error_rate', methods=['POST'])
+@app.route('/get_error_rate')
 def get_error_rate():
-    p = Prediction.get(Prediction.observation_id == 0])
-    return jsonify({"a":p
+    #p = Prediction.get(Prediction.observation_id == 0])
+    return jsonify({"a":"BB"
         
     })
 
