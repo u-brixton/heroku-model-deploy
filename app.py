@@ -6,7 +6,7 @@ import pandas as pd
 from flask import Flask, jsonify, request
 from peewee import (
     SqliteDatabase, PostgresqlDatabase, Model, IntegerField,
-    FloatField, TextField, IntegrityError
+    FloatField, TextField, IntegrityError,CharField,DateTimeField
 )
 from playhouse.shortcuts import model_to_dict
 
