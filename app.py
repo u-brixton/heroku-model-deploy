@@ -33,7 +33,8 @@ else:
 
 
 class Prediction(Model):
-    observation_id = IntegerField(unique=True)
+    item = IntegerField(unique=False)
+    student = IntegerField(unique=False)
 
     class Meta:
         database = DB
