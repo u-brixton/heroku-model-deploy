@@ -10,10 +10,6 @@ from peewee import (
     FloatField, TextField, IntegrityError
 )
 from playhouse.shortcuts import model_to_dict
-
-DATABASE_URL =  "postgres://axjyqoghnzvcvs:7fbb5d724a69284482896f914629796976e27258acf09bcdc9aedbf6081b64cf@ec2-46-137-113-157.eu-west-1.compute.amazonaws.com:5432/d5av4o4gbmrpqi"
-conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-cur = conn.cursor()
     
 
 ########################################
@@ -46,23 +42,23 @@ else:
 #     class Meta:
 #         database = DB
 
-# DB.create_tables([Prediction], safe=True)
+DB.create_tables([Prediction], safe=True)
 
 
 class Prediction(Model):
     item = IntegerField()
     student=IntegerField()
-    response_time=IntegerField()
-    correct=IntegerField()
-    difficulty=FloatField()
-    student_elo=FloatField()
-    item_elo=FloatField()
-    prob=FloatField()
+    #response_time=IntegerField()
+    #correct=IntegerField()
+    #difficulty=FloatField()
+    #student_elo=FloatField()
+    #item_elo=FloatField()
+    #prob=FloatField()
 
     class Meta:
         database = DB
 
-
+DB.create_tables([Prediction], safe=True)
 # End database stuff
 ########################################
 
