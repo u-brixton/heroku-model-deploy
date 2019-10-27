@@ -44,6 +44,19 @@ class Prediction(Model):
 
 DB.create_tables([Prediction], safe=True)
 
+
+class answers_short(Model):
+    observation_id = IntegerField(unique=True)
+    observation = TextField()
+    proba = FloatField()
+    true_class = IntegerField(null=True)
+
+    class Meta:
+        database = DB
+
+
+DB.create_tables([answers_short], safe=True)
+
 # End database stuff
 ########################################
 
@@ -114,7 +127,7 @@ def update():
 @app.route('/list-db-contents')
 def list_db_contents():
     return jsonify([
-        model_to_dict(obs) for obs in Prediction.select()
+        model_to_dict(obs) for obs in answers_short.select()
     ])
 
 
