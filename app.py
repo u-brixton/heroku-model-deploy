@@ -33,32 +33,18 @@ else:
     DB = SqliteDatabase('predictions.db')
 
 
-# class Prediction(Model):
-#     observation_id = IntegerField(unique=True)
-#     observation = TextField()
-#     proba = FloatField()
-#     true_class = IntegerField(null=True)
-
-#     class Meta:
-#         database = DB
-
-DB.create_tables([Prediction], safe=True)
-
-
 class Prediction(Model):
-    item = IntegerField()
-    student=IntegerField()
-    #response_time=IntegerField()
-    #correct=IntegerField()
-    #difficulty=FloatField()
-    #student_elo=FloatField()
-    #item_elo=FloatField()
-    #prob=FloatField()
+    observation_id = IntegerField(unique=True)
+    observation = TextField()
+    proba = FloatField()
+    true_class = IntegerField(null=True)
 
     class Meta:
         database = DB
 
+
 DB.create_tables([Prediction], safe=True)
+
 # End database stuff
 ########################################
 
@@ -84,12 +70,9 @@ with open('dtypes.pickle', 'rb') as fh:
 
 app = Flask(__name__)
 
-@app.route('/list-db-contents')
+@app.route('/list-db-contents',methods=["POST"])
 def list_db_contents():
-    return jsonify([
-        model_to_dict(obs) for obs in Prediction.select()
-    ])
-
+    return Prediction.select())
 
 # End webserver stuff
 ########################################
