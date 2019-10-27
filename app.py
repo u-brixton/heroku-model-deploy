@@ -117,7 +117,7 @@ def update():
         return jsonify({'error': error_msg})
 
 
-@app.route('/list-db-contents',methods=['POST'])
+@app.route('/list-db-contents',methods=['GET'])
 def list_db_contents():
     return jsonify([
         model_to_dict(obs) for obs in Prediction.select()
