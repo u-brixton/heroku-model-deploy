@@ -34,6 +34,7 @@ else:
 
 class Prediction(Model):
     item = IntegerField(unique=False)
+    time_x=DateTimeField(unique=False)
     student=IntegerField(unique=False)
     response_time=IntegerField(unique=False)
     correct=IntegerField(unique=False)
