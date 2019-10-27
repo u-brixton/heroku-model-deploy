@@ -38,9 +38,10 @@ class Prediction(Model):
     response_time=IntegerField(unique=False)
     correct=IntegerField(unique=False)
     difficulty=FloatField(unique=False)
-    student_elo=FloatField(unique=False)
     item_elo=FloatField(unique=False)
+    student_elo=FloatField(unique=False)
     prob=FloatField(unique=False)
+    rolling_accuracy=FloatField(unique=False)
 
     class Meta:
         database = DB
