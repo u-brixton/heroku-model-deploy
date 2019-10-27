@@ -33,8 +33,14 @@ else:
 
 
 class Prediction(Model):
-    item = IntegerField(unique=False)
-    student = IntegerField(unique=False)
+    item = IntegerField()
+    student=IntegerField()
+    response_time=IntegerField()
+    correct=IntegerField()
+    difficulty=FloatField()
+    student_elo=FloatField()
+    item_elo=FloatField()
+    prob=FloatField()
 
     class Meta:
         database = DB
