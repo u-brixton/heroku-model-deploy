@@ -11,10 +11,6 @@ from peewee import (
 )
 from playhouse.shortcuts import model_to_dict
 
-
-
-
-
 ########################################
 # Begin database stuff
 
@@ -49,7 +45,7 @@ class answers_short(Model):
     class Meta:
         database = DB
 
-DB.create_tables([answers_short], safe=True)
+#DB.create_tables([answers_short], safe=True)
 
 
 # End database stuff
@@ -77,14 +73,6 @@ with open('dtypes.pickle', 'rb') as fh:
 
 app = Flask(__name__)
 
-@app.route('/print_table',methods=["POST"])
-def print_table():
-    DATABASE_URL2 =  "postgres://axjyqoghnzvcvs:7fbb5d724a69284482896f914629796976e27258acf09bcdc9aedbf6081b64cf@ec2-46-137-113-157.eu-west-1.compute.amazonaws.com:5432/d5av4o4gbmrpqi"
-    conn = psycopg2.connect(DATABASE_URL2)    
-    cur = conn.cursor()
-    cur.execute("SELECT * FROM answers_short")
-    a=cur.fetchone()
-    return a
 
 # End webserver stuff
 ########################################
